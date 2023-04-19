@@ -7,6 +7,7 @@ class NormalText extends StatelessWidget {
   double height;
   TextOverflow overFlow;
   TextDecoration? decoration;
+  int maxline;
   NormalText({
     Key? key,
     this.color = const Color(0xFFccc7c5),
@@ -15,6 +16,7 @@ class NormalText extends StatelessWidget {
     this.height = 1.2,
     this.overFlow = TextOverflow.ellipsis,
     this.decoration = TextDecoration.none,
+    this.maxline = 1,
   }) : super(key: key);
 
   @override
@@ -22,6 +24,7 @@ class NormalText extends StatelessWidget {
     return Text(
       text,
       overflow: overFlow,
+      maxLines: maxline,
       style: GoogleFonts.lato(
         color: color,
         fontSize: size.sp,

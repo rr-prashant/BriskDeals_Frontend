@@ -11,18 +11,22 @@ class NtextField extends StatefulWidget {
   final Widget? prefix;
   final bool isPassword;
   final bool autofocus;
+  final VoidCallback? ontap;
+  final bool needArea;
 
-  NtextField(
-      {Key? key,
-      required this.controller,
-      required this.name,
-      required this.validator,
-      this.keyboardType = TextInputType.text,
-      this.obsecure = false,
-      this.prefix,
-      this.isPassword = false,
-      this.autofocus = false})
-      : super(key: key);
+  NtextField({
+    Key? key,
+    required this.controller,
+    required this.name,
+    required this.validator,
+    this.keyboardType = TextInputType.text,
+    this.obsecure = false,
+    this.prefix,
+    this.isPassword = false,
+    this.autofocus = false,
+    this.ontap,
+    this.needArea = false,
+  }) : super(key: key);
 
   @override
   State<NtextField> createState() => _NtextFieldState();
@@ -32,10 +36,13 @@ class _NtextFieldState extends State<NtextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: widget.needArea ? 5 : 1,
+      onTap: widget.ontap,
       obscureText: widget.obsecure,
       keyboardType: widget.keyboardType,
       controller: widget.controller,
       decoration: InputDecoration(
+        //hintMaxLines: 20,
         labelText: widget.name,
         prefixIcon: widget.prefix,
         suffixIcon: widget.isPassword

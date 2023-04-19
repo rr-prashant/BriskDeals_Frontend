@@ -6,6 +6,11 @@ class ValidationOfFields {
     if (value.isEmpty) return 'Enter your name';
   }
 
+  static String? valField(String? value) {
+    if (value == null) return "Empty field!";
+    if (value.isEmpty) return 'Empty Field!';
+  }
+
   static String? valToken(String? value) {
     if (value == null) return "Empty field!";
     if (value.isEmpty) return 'Enter Your Confirmation Token.';
